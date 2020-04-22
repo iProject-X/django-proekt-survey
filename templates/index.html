@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+      
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" type="txt/css" href="{% static 'css/style.css'%}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ 
+<body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+          <div class="card card-signin flex-row my-4">
+            <div class="card-img-left d-none d-md-flex embed-responsive embed-responsive-1by1">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
+               <!-- Background image for card set in CSS! -->
+            </div>
+            <div class="card-body">
+              
+              <h5 class="card-title text-center">RO'YXATDAN O'TISH</h5>
+              <form class="form-signin" action="" method="POST">
+                {% csrf_token %}
+             <div class="form-label-group">
+                  <input type="text" for="id_fullname" maxlength="200" required id="id_fullname"  name="fullname" class="form-control"   autofocus>
+                  <label  for="fullname">F.I.O</label>
+                </div>
+
+                <div class="form-label-group">
+                   <input type="date" class="form-control " name="age"  id="id_age" required > 
+                        <label  for="id_age">Tug'ilgan kuningiz</label>
+                </div>
+                
+
+                <div class="form-label-group">
+                  <input type="email" name="email" class="form-control" maxlength="200"  id="id_email" required autofocus>
+                  <label for="id_email">E-mail</label>
+                </div>
+                
+   
+                <div class="form-label-group">
+                  <input type="text" name="specialite" maxlength="100"  id="id_specialite" class="form-control text-uppercase"  required autofocus>
+                  <label for="id_specialite">Mutaxasisligingiz</label>
+                </div>
+
+                
+                <div class="form-label-group">
+                  <input type="text" name="language" class="form-control"  name="language" maxlength="100"  id="id_language" required autofocus>
+                  <label for="id_language">Ona tilingiz</label>
+               </div>
+               
+               
+                
+                
+                  
+                  
+                
+                   <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Ro'yxatdan o'tish</button>
+                </form>
+                
+            </div>
+          </div>
+        
+     {% endblock %}
+  </body>    
