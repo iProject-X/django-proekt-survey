@@ -4,63 +4,42 @@ from .models import *
 from .forms import *
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+
+def index(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+    else:
+        username = "Iltimos tizimga kiring"
+
+    context = {"username": username}
+    return render(request, 'index.html', context)
 
 
-#def startapp(request):
-#    if request.method == 'POST':
-#        fullname = request.POST['fullname']
-#        age = request.POST['age']
-#        email = request.POST['email']
-#        specialite = request.POST['specialite']
-#        language = request.POST['language']
-#        vibor_test = Vibor_test.objects.all() 
-#        vb = [vibor_test]  
-#        user = User.objects.create(fullname=fullname, age=age, email=email, 
-#                                specialite=specialite, language=language)
-#        user.save()
-#        print('lalalal')
-#        return redirect('/admin',{'vb': vibor_test})
-#    else:
-#        return render(request, 'index.html')
-
-#def startapp(request): 
-#    context ={}
-#    form = User(request.POST) 
-#    if form.is_valid():
-#        form.save()
-#        return test(request)
-#        
-#    else:
-#        return render(request, "index.html", context ) 
-#  
-#def test(request):
-#        #survey = Otvet.objects.all().order_by('?')[:1]
-#        return render(request, 'test.html', {"survey":survey})        
-#
-#def next(request):
-#    pass
-
+@login_required
+def profile(request):
+    return render(request, 'profile.html')
 
 def startapp(request):
     if request.method == 'POST':
         form = ExtendedUserCreationForm(request.POST)
-        profil_form = UserProfil(request.POST)
+        profile_form = UserProfil(request.POST)
 
-        if form.is_valid() and profil_form.is_valid():
+        if form.is_valid() and profile_form.is_valid():
             user = form.save()
 
-            profile = profil_form.save(commit=False)
-            profile.user    
+            profile = profile_form.save(commit=False)
+            profile.user = user
 
             profile.save()
 
-            first_name = form.cleaned_data.get('first_name')
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user =authenticate(username=username, password=password)
             login(request, user)
-
-            return redirect('startapp')
-    else:
-        form = ExtendedUserCreationForm()
-        profil_form = UserProfil()
-    context = {'form': form, 'profil_form': profil_form}
-    return render(request, 'home.html', context)
+            return redirect('index')
+        else:
+            form = ExtendedUserCreationForm()
+            profile_form = UserProfil()
+        
+        context = {'form': form, 'profile_form': profile_form}
+        return render(request, 'home.html', context)
