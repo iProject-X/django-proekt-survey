@@ -26,15 +26,22 @@
               </div>
               <div class="card-body">
                 
-                <form  method="post">
-                  {% csrf_token%}
-                {{profile_form.as_p}}
-                {{form.as_p}}
+                <form  action="" method="post">
+                  {% csrf_token %}
+             
+            <!--    <p>{{form.username}}</p>
+                <p>{{form.email}}</p>
+                <p>{{form.password1}}</p>
+                <p>{{form.password2}}</p>
+                <p>{{profile_form.fullname}}</p>
+                <p>{{profile_form.age}}</p>
+                <p>{{profile_form.specialite}}</p>
+                <p>{{profile_form.language}}</p>
                 <input type="submit" >
-              </form>
+              </form> -->
                 
-              <!--  <h5 class="card-title text-center">Register</h5>
-                <form class="form-signin">
+               <h5 class="card-title text-center">Register</h5>
+                <form class="form-signin" action="" method="post">
                   <div class="form-label-group">
                     <input type="text" id="inputUserame" class="form-control" placeholder="F.I.O." required autofocus {{profile_form.fullname}} 
                     <label for="inputUserame">F.I.O.</label>
@@ -79,7 +86,7 @@
                     <label for="inputConfirmPassword">Confirm password</label>
                   </div> 
 
-                  <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Ro'yxatdan O'tish</button>
+                  <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Ro'yxatdan O'tish"></button>
                 </form>
                 
             </div>

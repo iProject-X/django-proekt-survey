@@ -54,9 +54,6 @@ def index(request):
 
 
 
-@login_required
-def profile(request):
-    return render(request, 'profile.html')
 
 
 def startapp(request):
@@ -80,7 +77,7 @@ def startapp(request):
             login(request, user)
             
 
-            return redirect('/login_view')
+            return redirect('login')
     else:
         form = ExtendedUserCreationForm()
         profile_form = UserProfil()
@@ -98,5 +95,11 @@ def login_view(request):
     context = { 'form': form}
     return render(request, 'login.html', context)
 
+
+@login_required
 def profile(request):
+
     return render(request, 'home.html')
+
+def logout(request):
+    return render(request, '/')

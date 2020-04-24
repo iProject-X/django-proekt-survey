@@ -1,15 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+      
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" type="txt/css" href="{% static 'css/style.css'%}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form  method="post">
     {% csrf_token%}
-    {{form.as_p}}
-    {{profile_form.as_p}}
-    <input type="submit" value="create"></form>
+
+
 </body>
+
+{% endblock %}
 </html>
