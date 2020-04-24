@@ -1,7 +1,8 @@
 from django import forms
-from .models import Profil
+from .models import Profil, Otvet
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+
 
 
 
@@ -31,6 +32,7 @@ class UserProfil(forms.ModelForm):
         model = Profil
         fields = ('fullname', 'age', 'specialite', 'language')
    
-   
+
+
    
   

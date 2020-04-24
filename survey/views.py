@@ -44,13 +44,6 @@ from django.contrib.auth.forms import AuthenticationForm
 #def next(request):
 #    pass
 
-def index(request):
-    if request.user.is_authenticated:
-        username = request.user.username
-    else:
-        username = 'username ne korrektno'
-    context = {'username': username}
-    return render(request, 'index.html', context)
 
 
 
@@ -102,5 +95,4 @@ def profile(request):
     return render(request, 'home.html')
 
 def logout(request):
-    auth.logout(request)
-    return redirect('/')
+    logout(request)

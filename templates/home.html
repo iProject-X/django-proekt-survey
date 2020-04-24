@@ -15,11 +15,14 @@
     <title>Bosh sahifa</title>
 </head>
 <body>
-    asdad
-    {% csrf_token%}
-        <l>hello</l>
-        
-asdas
+  
+    {% if user.is_authenticated %}
+      Hi {{ user.username }}!
+      <p><a href="{% url 'logout' %}">logout</a></p>
+    {% else %}
+      <p>You are not logged in</p>
+      <a href="{% url 'login' %}">login</a>
+    {% endif %}
 </body>
 
 {% endblock %}
