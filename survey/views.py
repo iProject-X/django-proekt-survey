@@ -102,4 +102,5 @@ def profile(request):
     return render(request, 'home.html')
 
 def logout(request):
-    return render(request, '/')
+    auth.logout(request)
+    return redirect('/')
