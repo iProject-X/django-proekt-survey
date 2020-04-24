@@ -3,11 +3,12 @@ from django.contrib.auth.models import User
 
 class Profil(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    fullname = models.CharField(max_length=100, blank=True)
     age = models.DateField(blank=True)
     specialite = models.CharField(max_length=100,blank=True)
     language = models.CharField(max_length=100,blank=True)
     def __str__(self):
-        return self.username
+        return self.fullname
 
 
 
