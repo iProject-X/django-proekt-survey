@@ -1,7 +1,8 @@
 from django import forms
-from .models import Profil, Otvet
+from survey.models import Profil, Otvet
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import ModelChoiceField
 
 
 
@@ -35,4 +36,9 @@ class UserProfil(forms.ModelForm):
 
 
    
-  
+class OtvetForm(forms.ModelForm):
+    class Meta:
+        model = Otvet
+        fields = ('answer','user','stimul')
+        user = forms.ModelChoiceField(queryset=Profil.objects.all())
+        stimul = forms.ModelChoiceField(queryset=stimul.objects.all())

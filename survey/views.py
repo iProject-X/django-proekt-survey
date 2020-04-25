@@ -1,8 +1,15 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
-from .forms import ExtendedUserCreationForm, UserProfil
+from .forms import ExtendedUserCreationForm, UserProfil,OtvetForm
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import logout as django_logout
+
+@login_required
+def logout(request):
+    django_logout(request)
+    return  HttpResponseRedirect('/login')
 
 
 
@@ -70,7 +77,7 @@ def startapp(request):
             login(request, user)
             
 
-            return redirect('login')
+            return redirect('/login')
     else:
         form = ExtendedUserCreationForm()
         profile_form = UserProfil()
@@ -89,10 +96,19 @@ def login_view(request):
     return render(request, 'login.html', context)
 
 
+
+
 @login_required
-def profile(request):
+def profile(request):    
+    if request.method == 'POST':
 
-    return render(request, 'home.html')
+        form = OtvetForm(request.POST)
+     
 
-def logout(request):
-    logout(request)
+        if form.is_valid():
+            form.save()
+            
+    else:
+        form = OtvetForm()
+    context = {'form': form, }
+    return render(request, 'home.html', context)
