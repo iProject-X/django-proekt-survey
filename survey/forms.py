@@ -41,4 +41,4 @@ class OtvetForm(forms.ModelForm):
         model = Otvet
         fields = ('answer','user','stimul')
         user = forms.ModelChoiceField(queryset=Profil.objects.all())
-        stimul = forms.ModelChoiceField(queryset=stimul.objects.all())
+        stimul = forms.ModelChoiceField(queryset=Otvet.objects.all())
