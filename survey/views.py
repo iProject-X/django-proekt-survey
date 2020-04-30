@@ -70,7 +70,7 @@ def startapp(request):
             profile.user = user   
 
             profile.save()
-            
+            email = form.cleaned_data.get('email')
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
@@ -98,7 +98,7 @@ def login_view(request):
 
 
 
-@login_required
+@login_required    
 def profile(request):    
     if request.method == 'POST':
 

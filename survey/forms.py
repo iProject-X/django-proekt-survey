@@ -17,7 +17,7 @@ class ExtendedUserCreationForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2'  )
+        fields = ('username', 'first_name', 'email', 'password1', 'password2'  )
 
     def save(self, commit=True):
         user = super().save(commit==False)
@@ -31,7 +31,7 @@ class ExtendedUserCreationForm(UserCreationForm):
 class UserProfil(forms.ModelForm):
     class Meta:
         model = Profil
-        fields = ('fullname', 'age', 'specialite', 'language')
+        fields = ('age', 'specialite', 'language')
    
 
 
@@ -39,6 +39,6 @@ class UserProfil(forms.ModelForm):
 class OtvetForm(forms.ModelForm):
     class Meta:
         model = Otvet
-        fields = ('answer','user','stimul')
-        user = forms.ModelChoiceField(queryset=Profil.objects.all())
-        stimul = forms.ModelChoiceField(queryset=Otvet.objects.all())
+        fields = ('answer', 'stimul')
+      
+       

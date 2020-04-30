@@ -51,7 +51,7 @@
         -->  
 <form method="post">
 {% csrf_token %}
-
+{{errors}}
 {{form}}
 <button type="submit">login</button>
 </form>

@@ -17,18 +17,18 @@
 <body>
   
     {% if user.is_authenticated %}
-      Hi {{ user.username }}!
-      <p><a href="{% url 'logout' %}">logout</a></p>
+      Hush Kelibsiz: {{ user.first_name }}!
+   
     {% else %}
       <p>You are not logged in</p>
       <a style="color:black"href="{% url 'login' %}">login</a>
     {% endif %}
     <form action="" method="post">
         {% csrf_token %} 
-    {{form.user}}
-    <p>{{form.stimul}}</p>
-    <p>{{form.answer}}</p>
+        {{form.as_p}}
     <input type="submit" >
+
+    <p><a href="{% url 'logout' %}">logout</a></p>
 </form>
 </body>
 
