@@ -99,16 +99,19 @@ def login_view(request):
 
 
 @login_required    
-def profile(request):    
+def profile(request, *args, **kwargs):    
     if request.method == 'POST':
 
         form = OtvetForm(request.POST)
-     
-
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            
+            form = OtvetForm()
             
     else:
         form = OtvetForm()
-    context = {'form': form, }
+    context = {'form': form,
+                'stimuls':OtvetForm().fields }
     return render(request, 'home.html', context)

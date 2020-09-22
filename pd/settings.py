@@ -26,7 +26,7 @@ SECRET_KEY = '+l_9axo98g03)7pez48n)%_3ude1l8@law#f=9o!290@%)bhu*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fierce-fortress-04414.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'uz'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 

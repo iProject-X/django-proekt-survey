@@ -17,7 +17,7 @@
 <body>
   
     {% if user.is_authenticated %}
-      Hush Kelibsiz: {{ user.first_name }}!
+      Добро пожаловать: {{ user.first_name }}!
    
     {% else %}
       <p>You are not logged in</p>
@@ -25,10 +25,13 @@
     {% endif %}
     <form action="" method="post">
         {% csrf_token %} 
-        {{form.as_p}}
+        {%for field in stimuls%}
+        <p>{{field.stimul}}</p> 
+        <p>{{field.answer}}</p>
+        {%endfor%}
     <input type="submit" >
-
-    <p><a href="{% url 'logout' %}">logout</a></p>
+    
+    <p><a href="{% url 'logout' %}">Выход</a></p>
 </form>
 </body>
 
